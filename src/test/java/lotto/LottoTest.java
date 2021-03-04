@@ -22,12 +22,15 @@ public class LottoTest {
     }
 
     @Test
-    @DisplayName("로또번호생성")
-    public void CreateLottoNumber(){
+    @DisplayName("로또번호_갯수만큼_생성")
+    public void getPurchasesLottoTest(){
         Lotto lotto = new Lotto();
-        List<Integer> balls = lotto.getNumber();
-        for(int i = 0;i<balls.size();i++){
-            System.out.println(balls.get(i));
+        List<ArrayList<Integer>> lottoLists = lotto.getPurchasesLotto(2);
+        for(int i=0;i<lottoLists.size();i++){
+            System.out.println(i+"번째 배열>>> ");
+            for(int j=0;j<lottoLists.get(i).size();j++){
+                System.out.println(lottoLists.get(i).get(j));
+            }
         }
     }
 }

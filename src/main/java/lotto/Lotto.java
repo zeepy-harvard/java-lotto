@@ -14,12 +14,15 @@ public class Lotto {
         //lottoLists = countLotto(numberOfLotto,lottoLists);
         //return lottoLists;
     }
-    private ArrayList<Integer> getBuyNumber(int numberOfLotto){
-        ArrayList<Integer> lottoLists = getNumber();
+    public List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
+        List<ArrayList<Integer>> lottoLists = new ArrayList<>();
+        for(int i =0;i<numberOfLotto;i++){
+            lottoLists.add(getLottoNumber());
+        }
         return lottoLists;
     }
 
-    public ArrayList<Integer> getNumber(){
+    private ArrayList<Integer> getLottoNumber(){
         List<LottoNumber> allBalls = new ArrayList<>(Arrays.asList(LottoNumber.values()));
         Collections.shuffle(allBalls);
         ArrayList<Integer> lottoList = new ArrayList<>();
