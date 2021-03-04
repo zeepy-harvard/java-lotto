@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-    public void lotto(int money){
+    public void lottoGame(int money){
         List<ArrayList<Integer>> lottoLists = new ArrayList();
 
         int numberOfLotto = getNumberOfLotto(money);
@@ -14,16 +14,19 @@ public class Lotto {
         //lottoLists = countLotto(numberOfLotto,lottoLists);
         //return lottoLists;
     }
-    private ArrayList<LottoNumber> startLottoMachine(){
-        ArrayList<LottoNumber> balls = getBalls();
-        return balls;
+    private ArrayList<Integer> getBuyNumber(int numberOfLotto){
+        ArrayList<Integer> lottoLists = getNumber();
+        return lottoLists;
     }
 
-    public ArrayList<LottoNumber> getBalls(){
+    public ArrayList<Integer> getNumber(){
         List<LottoNumber> allBalls = new ArrayList<>(Arrays.asList(LottoNumber.values()));
         Collections.shuffle(allBalls);
-        ArrayList<LottoNumber> balls = new ArrayList<>(allBalls.subList(0,6));
-        return balls;
+        ArrayList<Integer> lottoList = new ArrayList<>();
+        for(int i =0;i<6;i++){
+            lottoList.add(allBalls.get(i).getNumber());
+        }
+        return lottoList;
     }
 
     private int getNumberOfLotto(int money) {

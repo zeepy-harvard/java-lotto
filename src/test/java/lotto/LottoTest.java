@@ -25,9 +25,9 @@ public class LottoTest {
     @DisplayName("로또번호생성")
     public void CreateLottoNumber(){
         Lotto lotto = new Lotto();
-        List<LottoNumber> balls = lotto.getBalls();
+        List<Integer> balls = lotto.getNumber();
         for(int i = 0;i<balls.size();i++){
-            System.out.println(balls.get(i).getNumber());
+            System.out.println(balls.get(i));
         }
     }
 }
