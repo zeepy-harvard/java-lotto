@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Input {
     public static int inputMoney(){
         Scanner scanner = new Scanner(System.in);
+        System.out.println("구입금액을 입력해 주세요.");
         String inputValue = scanner.nextLine();
         return convertToInteger(inputValue);
     }

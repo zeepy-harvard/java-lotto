@@ -30,6 +30,5 @@ public class Output {
     }
     public static void errorOutput(Exception e){
         System.out.println("에러발생>> "+e.getMessage());
-        e.printStackTrace();
     }
 }
