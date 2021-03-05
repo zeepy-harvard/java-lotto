@@ -13,8 +13,14 @@ public class Input {
         return Integer.parseInt(inputValue);
     }
 
-    public static String previousLottoNumber(){
+    public static String inputPreviousLottoNumber(){
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+    
+    public static int inputBonusBall(){
+        Scanner scanner = new Scanner(System.in);
+        String bonusBall = scanner.nextLine();
+        return convertToInteger(bonusBall);
     }
 }
