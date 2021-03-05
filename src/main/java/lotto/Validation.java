@@ -23,6 +23,6 @@ public class Validation {
     }
 
     public static void bonusBallValidation(int bonusBall)throws RuntimeException{
-
+        if(bonusBall > 45) throw new RuntimeException("존재하지 않는 로또번호를 입력하셨습니다.");
     }
 }
