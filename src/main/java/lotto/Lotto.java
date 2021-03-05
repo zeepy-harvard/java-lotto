@@ -15,7 +15,10 @@ public class Lotto {
 
         lottoLists=getPurchasesLotto(numberOfLotto);
         Output.outputLottoLists(lottoLists);
+
+        String previousLottoNumber = Input.previousLottoNumber();
     }
+
     public List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
         List<ArrayList<Integer>> lottoLists = new ArrayList<>();
         for(int i =0;i<numberOfLotto;i++){

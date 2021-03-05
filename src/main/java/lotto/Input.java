@@ -10,7 +10,11 @@ public class Input {
     }
 
     private static int convertToInteger(String inputValue){
-        int integerValue = Integer.parseInt(inputValue);
-        return integerValue;
+        return Integer.parseInt(inputValue);
+    }
+
+    public static String previousLottoNumber(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }
