@@ -18,12 +18,43 @@ public class Lotto {
 
         Integer[] previousLottoNumber = Input.inputPreviousLottoNumber();
         int bonusBall = Input.inputBonusBall();
-        //Integer[] lottoResult = compareLottoNumber(lottoLists,previousLottoNumber,bonusBall);
+        Integer[] lottoResult = compareLottoNumber(lottoLists,previousLottoNumber,bonusBall);
+        Output.outputStatistics(lottoResult);
     }
 
-//    private Integer[] compareLottoNumber(List<ArrayList<Integer>> lottoList,Integer[] previousLottoNumber,int bonusBall){
-//
-//    }
+    private Integer[] compareLottoNumber(List<ArrayList<Integer>> lottoLists,Integer[] previousLottoNumber,int bonusBall){
+        Integer[] statistics = new Integer[]{0,0,0,0,0};
+        for(ArrayList<Integer> lottoList : lottoLists){
+            int numberCnt = 0;
+            boolean isCorrectBonus = false;
+
+            numberCnt = checkNumber(lottoList,previousLottoNumber,numberCnt);
+            isCorrectBonus = checkBonus(lottoList, bonusBall, isCorrectBonus);
+            statistics = setStatistics(statistics,numberCnt,isCorrectBonus);
+        }
+        return statistics;
+    }
+    private Integer[] setStatistics(Integer[] statistics,int numberCnt,boolean isCorrectBonus){
+        if(numberCnt == 3) statistics[0]++;
+        if(numberCnt == 4 && !isCorrectBonus) statistics[1]++;
+        if(numberCnt == 5) statistics[2]++;
+        if(numberCnt == 4 && isCorrectBonus) statistics[3]++;
+        if(numberCnt == 6) statistics[4]++;
+        return statistics;
+    }
+
+    private boolean checkBonus(ArrayList<Integer> lottoList, int bonusBall, boolean isCorrectBonus) {
+        if(lottoList.contains(bonusBall)) isCorrectBonus=true;
+        return isCorrectBonus;
+    }
+
+    private int checkNumber(ArrayList<Integer> lottoList,Integer[] previousLottoNumber,int numberCnt){
+        for (Integer integer : previousLottoNumber)
+            if (lottoList.contains(integer)) {
+                numberCnt++;
+            }
+        return numberCnt;
+    }
 
     private ArrayList getPurchasesLotto(int numberOfLotto){
         ArrayList lottoLists = new ArrayList<>();

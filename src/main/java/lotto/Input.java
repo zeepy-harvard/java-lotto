@@ -15,13 +15,8 @@ public class Input {
 
     public static Integer[] inputPreviousLottoNumber(){
         Scanner scanner = new Scanner(System.in);
+        System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         return prevLottoNumberSplit(scanner.nextLine());
-    }
-    
-    public static int inputBonusBall(){
-        Scanner scanner = new Scanner(System.in);
-        String bonusBall = scanner.nextLine();
-        return convertToInteger(bonusBall);
     }
 
     public static Integer[] prevLottoNumberSplit(String previousLottoNumber){
@@ -32,5 +27,12 @@ public class Input {
             integerNumber[i] = Integer.parseInt(splitNumber[i]);
         }
         return integerNumber;
+    }
+
+    public static int inputBonusBall(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("보너스 볼을 입력해 주세요.");
+        return  scanner.nextInt();
+//        return convertToInteger(bonusBall);
     }
 }

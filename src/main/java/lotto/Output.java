@@ -12,4 +12,19 @@ public class Output {
     public static void outputNumberOfPurchaseLotto(int numberOfLotto){
         System.out.println(numberOfLotto+"개를 구매했습니다.");
     }
+    public static void outputStatistics(Integer[] statistics){
+        System.out.println("당첨 통계");
+        System.out.println("--------------");
+        normalStatisticsOutput(3,5000,statistics[0]);
+        normalStatisticsOutput(4,50000,statistics[1]);
+        normalStatisticsOutput(5,1500000,statistics[2]);
+        bonusStatisticsOutput(5,30000000,statistics[3]);
+        normalStatisticsOutput(6,2000000000,statistics[4]);
+    }
+    private static void normalStatisticsOutput(int matchNumber,int prizeMoney,int matchCount){
+        System.out.println(matchNumber+"개 일치 ("+prizeMoney+"원) - "+matchCount+"개");
+    }
+    private static void bonusStatisticsOutput(int matchNumber,int prizeMoney,int matchCount){
+        System.out.println(matchNumber+"개 일치 , 보너스 볼 일치("+prizeMoney+"원) - "+matchCount+"개");
+    }
 }

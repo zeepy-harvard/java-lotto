@@ -15,7 +15,7 @@ public class LottoTest {
     @Test
     @DisplayName("로또_번호_자동생성")
     public void NumberOfLotto(){
-        
+
     }
 
     @Test
