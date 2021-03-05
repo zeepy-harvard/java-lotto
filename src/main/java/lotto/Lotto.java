@@ -8,7 +8,7 @@ import java.util.List;
 public class Lotto {
 
     public void lottoGame(){
-        List<ArrayList<Integer>> lottoLists = new ArrayList();
+        ArrayList lottoLists = new ArrayList();
         int money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);
         Output.outputNumberOfPurchaseLotto(numberOfLotto);
@@ -16,11 +16,12 @@ public class Lotto {
         lottoLists=getPurchasesLotto(numberOfLotto);
         Output.outputLottoLists(lottoLists);
 
-        String previousLottoNumber = Input.previousLottoNumber();
+        String previousLottoNumber = Input.inputPreviousLottoNumber();
+        int bonusBall = Input.inputBonusBall();
     }
 
-    public List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
-        List<ArrayList<Integer>> lottoLists = new ArrayList<>();
+    public ArrayList getPurchasesLotto(int numberOfLotto){
+        ArrayList lottoLists = new ArrayList<>();
         for(int i =0;i<numberOfLotto;i++){
             lottoLists.add(getLottoNumber());
         }
