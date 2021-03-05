@@ -8,10 +8,6 @@ public class WebUILottoApplication {
     public static void main(String[] args) {
         Lotto lotto = new Lotto();
         lotto.lottoGame();
-//        List<ArrayList<Integer>> lottoList = lotto.lotto(2000);
-//        for(int i:lottoList.get(0)){
-//            System.out.println(i);
-//        }
     }
 
 }

@@ -33,4 +33,12 @@ public class LottoTest {
             }
         }
     }
+
+    @Test
+    @DisplayName("구매한_로또들_출력")
+    public void outPutPurchaseLottoListTest(){
+        Lotto lotto = new Lotto();
+        List<ArrayList<Integer>> lottoLists = lotto.getPurchasesLotto(3);
+        Output.outputLottoLists(lottoLists);
+    }
 }

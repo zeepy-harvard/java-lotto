@@ -11,9 +11,7 @@ public class Lotto {
         List<ArrayList<Integer>> lottoLists = new ArrayList();
         int money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);
-
-        //lottoLists = countLotto(numberOfLotto,lottoLists);
-        //return lottoLists;
+        Output.outputNumberOfPurchaseLotto(numberOfLotto);
     }
     public List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
         List<ArrayList<Integer>> lottoLists = new ArrayList<>();
