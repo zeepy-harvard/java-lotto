@@ -11,6 +11,11 @@ public class Lotto {
     private static int FIVE_CORRECT_PRIZE = 1500000;
     private static int FIVE_CORRECT_PRIZE_WITH_BONUS = 30000000;
     private static int ALL_CORRECT_PRIZE = 2000000000;
+    private static int THREE_CORRECT_NUMBER_INDEX = 0;
+    private static int FOUR_CORRECT_NUMBER_INDEX = 1;
+    private static int FIVE_CORRECT_NUMBER_INDEX = 2;
+    private static int FIVE_CORRECT_WITH_BONUS_NUMBER_INDEX = 3;
+    private static int ALL_CORRECT_NUMBER_INDEX = 4;
     private int money;
 
     public void lottoGame(){
@@ -37,17 +42,16 @@ public class Lotto {
 
             numberCnt = checkNumber(lottoList,previousLottoNumber,numberCnt);
             isCorrectBonus = checkBonus(lottoList, bonusBall, isCorrectBonus);
-            statistics = setStatistics(statistics,numberCnt,isCorrectBonus);
+            setStatistics(statistics,numberCnt,isCorrectBonus);
         }
         return statistics;
     }
-    private Integer[] setStatistics(Integer[] statistics,int numberCnt,boolean isCorrectBonus){
-        if(numberCnt == 3) statistics[0]++;
-        if(numberCnt == 4 && !isCorrectBonus) statistics[1]++;
-        if(numberCnt == 5) statistics[2]++;
-        if(numberCnt == 4 && isCorrectBonus) statistics[3]++;
-        if(numberCnt == 6) statistics[4]++;
-        return statistics;
+    private void setStatistics(Integer[] statistics,int numberCnt,boolean isCorrectBonus){
+        if(numberCnt == 3) statistics[THREE_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 4 && !isCorrectBonus) statistics[FOUR_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 5) statistics[FIVE_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 4 && isCorrectBonus) statistics[FIVE_CORRECT_WITH_BONUS_NUMBER_INDEX]++;
+        if(numberCnt == 6) statistics[ALL_CORRECT_NUMBER_INDEX]++;
     }
 
     private boolean checkBonus(ArrayList<Integer> lottoList, int bonusBall, boolean isCorrectBonus) {
@@ -65,9 +69,7 @@ public class Lotto {
 
     private ArrayList getPurchasesLotto(int numberOfLotto){
         ArrayList lottoLists = new ArrayList<>();
-        for(int i =0;i<numberOfLotto;i++){
-            lottoLists.add(getLottoNumber());
-        }
+        for(int i =0;i<numberOfLotto;i++) lottoLists.add(getLottoNumber());
         return lottoLists;
     }
 
@@ -87,7 +89,6 @@ public class Lotto {
 
     private double getYield(Integer[] statistics){
         int sum = (THREE_CORRECT_PRIZE * statistics[0]) + (FOUR_CORRECT_PRIZE * statistics[1]) + (FIVE_CORRECT_PRIZE * statistics[2]) + (FIVE_CORRECT_PRIZE_WITH_BONUS * statistics[3]) + (ALL_CORRECT_PRIZE * statistics[4]);
-        int yield = sum / money;
-        return yield;
+        return sum / money;
     }
 }
