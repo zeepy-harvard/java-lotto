@@ -38,6 +38,5 @@ public class Input {
         int bonusBall = scanner.nextInt();
         Validation.bonusBallValidation(bonusBall);
         return  bonusBall;
-//        return convertToInteger(bonusBall);
     }
 }
