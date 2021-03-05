@@ -14,7 +14,7 @@ public class Input {
         return Integer.parseInt(inputValue);
     }
 
-    public static Integer[] inputPreviousLottoNumber()throws RuntimeException{
+    public static Integer[] inputPreviousLottoNumber(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         Integer[] preLottoNumber = prevLottoNumberSplit(scanner.nextLine());

@@ -2,7 +2,7 @@ package lotto;
 
 public class Validation {
 
-    public static void previousLottoNumberValidation(Integer[] previousLottoNumber) throws RuntimeException{
+    public static void previousLottoNumberValidation(Integer[] previousLottoNumber) {
         for(int i=0;i<previousLottoNumber.length;i++) {
             checkRangeOfLottoNumber(i,previousLottoNumber);
             checkSameNumber(i,previousLottoNumber);
@@ -20,5 +20,9 @@ public class Validation {
 
     private static void checkRangeOfLottoNumber(int winningNumberIndex,Integer[] previousLottoNumber){
         if(previousLottoNumber[winningNumberIndex] > 45) throw new RuntimeException("존재하지 않는 로또번호를 입력하셨습니다.");
+    }
+
+    public static void bonusBallValidation(int bonusBall)throws RuntimeException{
+
     }
 }
