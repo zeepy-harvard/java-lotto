@@ -12,7 +12,7 @@ public class Output {
     public static void outputNumberOfPurchaseLotto(int numberOfLotto){
         System.out.println(numberOfLotto+"개를 구매했습니다.");
     }
-    public static void outputStatistics(Integer[] statistics){
+    public static void outputStatistics(Integer[] statistics,double yield){
         System.out.println("당첨 통계");
         System.out.println("--------------");
         normalStatisticsOutput(3,5000,statistics[0]);
@@ -20,6 +20,7 @@ public class Output {
         normalStatisticsOutput(5,1500000,statistics[2]);
         bonusStatisticsOutput(5,30000000,statistics[3]);
         normalStatisticsOutput(6,2000000000,statistics[4]);
+        System.out.printf("총 수익률은 %.2f 입니다.",yield);
     }
     private static void normalStatisticsOutput(int matchNumber,int prizeMoney,int matchCount){
         System.out.println(matchNumber+"개 일치 ("+prizeMoney+"원) - "+matchCount+"개");

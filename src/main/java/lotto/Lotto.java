@@ -6,10 +6,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
+    private static int THREE_CORRECT_PRIZE = 5000;
+    private static int FOUR_CORRECT_PRIZE = 50000;
+    private static int FIVE_CORRECT_PRIZE = 1500000;
+    private static int FIVE_CORRECT_PRIZE_WITH_BONUS = 30000000;
+    private static int ALL_CORRECT_PRIZE = 2000000000;
+    private int money;
 
     public void lottoGame(){
         ArrayList lottoLists;
-        int money = Input.inputMoney();
+        this.money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);
         Output.outputNumberOfPurchaseLotto(numberOfLotto);
 
@@ -19,7 +25,8 @@ public class Lotto {
         Integer[] previousLottoNumber = Input.inputPreviousLottoNumber();
         int bonusBall = Input.inputBonusBall();
         Integer[] lottoResult = compareLottoNumber(lottoLists,previousLottoNumber,bonusBall);
-        Output.outputStatistics(lottoResult);
+        double yeild = getYield(lottoResult);
+        Output.outputStatistics(lottoResult,yeild);
     }
 
     private Integer[] compareLottoNumber(List<ArrayList<Integer>> lottoLists,Integer[] previousLottoNumber,int bonusBall){
@@ -76,5 +83,11 @@ public class Lotto {
 
     private int getNumberOfLotto(int money) {
         return money/1000;
+    }
+
+    private double getYield(Integer[] statistics){
+        int sum = (THREE_CORRECT_PRIZE * statistics[0]) + (FOUR_CORRECT_PRIZE * statistics[1]) + (FIVE_CORRECT_PRIZE * statistics[2]) + (FIVE_CORRECT_PRIZE_WITH_BONUS * statistics[3]) + (ALL_CORRECT_PRIZE * statistics[4]);
+        int yield = sum / money;
+        return yield;
     }
 }
