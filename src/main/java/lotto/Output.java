@@ -28,4 +28,8 @@ public class Output {
     private static void bonusStatisticsOutput(int matchNumber,int prizeMoney,int matchCount){
         System.out.println(matchNumber+"개 일치 , 보너스 볼 일치("+prizeMoney+"원) - "+matchCount+"개");
     }
+    public static void errorOutput(Exception e){
+        System.out.println("에러발생>> "+e.getMessage());
+        e.printStackTrace();
+    }
 }

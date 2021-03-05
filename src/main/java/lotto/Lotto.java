@@ -18,7 +18,7 @@ public class Lotto {
     private static int ALL_CORRECT_NUMBER_INDEX = 4;
     private int money;
 
-    public void lottoGame(){
+    public void lottoGame()throws RuntimeException{
         ArrayList lottoLists;
         this.money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);

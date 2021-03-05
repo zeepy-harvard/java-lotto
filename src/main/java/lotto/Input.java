@@ -13,10 +13,12 @@ public class Input {
         return Integer.parseInt(inputValue);
     }
 
-    public static Integer[] inputPreviousLottoNumber(){
+    public static Integer[] inputPreviousLottoNumber()throws RuntimeException{
         Scanner scanner = new Scanner(System.in);
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
-        return prevLottoNumberSplit(scanner.nextLine());
+        Integer[] preLottoNumber = prevLottoNumberSplit(scanner.nextLine());
+        Validation.previousLottoNumberValidation(preLottoNumber);
+        return preLottoNumber;
     }
 
     public static Integer[] prevLottoNumberSplit(String previousLottoNumber){
