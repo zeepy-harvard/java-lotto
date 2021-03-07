@@ -66,25 +66,31 @@ public class Lotto {
         return statistics;
     }
 
-    private void setStatistics(Integer[] statistics,int numberCnt,boolean isCorrectBonus){
-        if(numberCnt == 3) statistics[THREE_CORRECT_NUMBER_INDEX]++;
-        if(numberCnt == 4 && !isCorrectBonus) statistics[FOUR_CORRECT_NUMBER_INDEX]++;
-        if(numberCnt == 5) statistics[FIVE_CORRECT_NUMBER_INDEX]++;
-        if(numberCnt == 4 && isCorrectBonus) statistics[FIVE_CORRECT_WITH_BONUS_NUMBER_INDEX]++;
-        if(numberCnt == 6) statistics[ALL_CORRECT_NUMBER_INDEX]++;
+    private int checkNumber(ArrayList<Integer> lottoList,Integer[] previousLottoNumber,int numberCnt){
+        for (Integer previousNumber : previousLottoNumber) {
+            numberCnt = getNumberCnt(lottoList, numberCnt, previousNumber);
+        }
+        return numberCnt;
     }
 
-    private int checkNumber(ArrayList<Integer> lottoList,Integer[] previousLottoNumber,int numberCnt){
-        for (Integer integer : previousLottoNumber)
-            if (lottoList.contains(integer)) {
-                numberCnt++;
-            }
+    private int getNumberCnt(ArrayList<Integer> lottoList, int numberCnt, Integer previousNumber) {
+        if (lottoList.contains(previousNumber)) {
+            numberCnt++;
+        }
         return numberCnt;
     }
 
     private boolean checkBonus(ArrayList<Integer> lottoList, int bonusBall, boolean isCorrectBonus) {
         if(lottoList.contains(bonusBall)) isCorrectBonus=true;
         return isCorrectBonus;
+    }
+
+    private void setStatistics(Integer[] statistics,int numberCnt,boolean isCorrectBonus){
+        if(numberCnt == 3) statistics[THREE_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 4 && !isCorrectBonus) statistics[FOUR_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 5) statistics[FIVE_CORRECT_NUMBER_INDEX]++;
+        if(numberCnt == 4 && isCorrectBonus) statistics[FIVE_CORRECT_WITH_BONUS_NUMBER_INDEX]++;
+        if(numberCnt == 6) statistics[ALL_CORRECT_NUMBER_INDEX]++;
     }
 
     private double getYield(Integer[] statistics){
