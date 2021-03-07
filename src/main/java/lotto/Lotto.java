@@ -19,7 +19,7 @@ public class Lotto {
     private int money;
 
     public void lottoGame(){
-        ArrayList lottoLists;
+        List<ArrayList<Integer>> lottoLists;
         this.money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);
         Output.outputNumberOfPurchaseLotto(numberOfLotto);
@@ -37,8 +37,8 @@ public class Lotto {
     private int getNumberOfLotto(int money) {
         return money/1000;
     }
-    private ArrayList getPurchasesLotto(int numberOfLotto){
-        ArrayList lottoLists = new ArrayList<>();
+    private List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
+        List<ArrayList<Integer>> lottoLists = new ArrayList<>();
         for(int i =0;i<numberOfLotto;i++) lottoLists.add(getLottoNumber());
         return lottoLists;
     }
