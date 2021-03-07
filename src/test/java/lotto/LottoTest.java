@@ -12,4 +12,4 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("javaLotto_테스트_클래스")
 public class LottoTest {
 
-}
+} 
