@@ -18,13 +18,14 @@ public class Lotto {
     private static int ALL_CORRECT_NUMBER_INDEX = 4;
     private int money;
 
+    LottoLists<ArrayList<Integer>> lottoLists;
+
     public void lottoGame(){
-        List<ArrayList<Integer>> lottoLists;
         this.money = Input.inputMoney();
         int numberOfLotto = getNumberOfLotto(money);
         Output.outputNumberOfPurchaseLotto(numberOfLotto);
 
-        lottoLists=getPurchasesLotto(numberOfLotto);
+        lottoLists = new LottoLists(getPurchasesLotto(numberOfLotto));
         Output.outputLottoLists(lottoLists);
 
         Integer[] previousLottoNumber = Input.inputPreviousLottoNumber();
@@ -38,9 +39,9 @@ public class Lotto {
         return money/1000;
     }
     private List<ArrayList<Integer>> getPurchasesLotto(int numberOfLotto){
-        List<ArrayList<Integer>> lottoLists = new ArrayList<>();
-        for(int i =0;i<numberOfLotto;i++) lottoLists.add(getLottoNumber());
-        return lottoLists;
+        List<ArrayList<Integer>> createLottoLists = new ArrayList<>();
+        for(int i =0;i<numberOfLotto;i++) createLottoLists.add(getLottoNumber());
+        return createLottoLists;
     }
 
     private ArrayList<Integer> getLottoNumber(){
@@ -53,9 +54,10 @@ public class Lotto {
         return lottoList;
     }
 
-    private Integer[] compareLottoNumber(List<ArrayList<Integer>> lottoLists,Integer[] previousLottoNumber,int bonusBall){
+    private Integer[] compareLottoNumber(LottoLists<ArrayList<Integer>> lottoLists,Integer[] previousLottoNumber,int bonusBall){
         Integer[] statistics = new Integer[]{0,0,0,0,0};
-        for(ArrayList<Integer> lottoList : lottoLists){
+        for(int i=0;i<lottoLists.size();i++){
+            ArrayList<Integer> lottoList= lottoLists.getLottoList(i);
             int numberCnt = 0;
             boolean isCorrectBonus = false;
 

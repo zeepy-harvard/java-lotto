@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
-    public static void outputLottoLists(List<ArrayList<Integer>> lottoLists){
-        for(ArrayList<Integer> listRow : lottoLists){
-            System.out.println(listRow);
+    public static void outputLottoLists(LottoLists lottoLists){
+        for(int i=0;i<lottoLists.size();i++){
+            System.out.println(lottoLists.getLottoList(i));
         }
     }
     public static void outputNumberOfPurchaseLotto(int numberOfLotto){
