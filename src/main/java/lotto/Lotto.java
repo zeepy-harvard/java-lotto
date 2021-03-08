@@ -18,7 +18,7 @@ public class Lotto {
     private static int ALL_CORRECT_NUMBER_INDEX = 4;
     private int money;
 
-    LottoLists<ArrayList<Integer>> lottoLists;
+    private LottoLists<ArrayList<Integer>> lottoLists;
 
     public void lottoGame(){
         this.money = Input.inputMoney();
