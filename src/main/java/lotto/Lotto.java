@@ -31,8 +31,8 @@ public class Lotto {
         Integer[] previousLottoNumber = Input.inputPreviousLottoNumber();
         int bonusBall = Input.inputBonusBall();
         Integer[] lottoResult = compareLottoNumber(lottoLists,previousLottoNumber,bonusBall);
-        double yeild = getYield(lottoResult);
-        Output.outputStatistics(lottoResult,yeild);
+        double yield = getYield(lottoResult);
+        Output.outputStatistics(lottoResult,yield);
     }
 
     private int getNumberOfLotto(int money) {
