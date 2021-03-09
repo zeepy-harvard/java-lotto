@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -107,6 +108,28 @@ public class LottoTest {
     @Test
     @DisplayName("수익률_테스트")
     public void getYieldTest(){
+        Lotto lottoClass = new Lotto();
+        Integer[] statistics = new Integer[]{2,5,0,0,1};
+        int money = 14000;
+        int testSum = statistics[0]*5000+statistics[1]*50000+statistics[4]*2000000000;
+        double testYield = (double) testSum/money;
+        try{
+            Field moneyField = lottoClass.getClass().getDeclaredField("money");
+            Method getYieldMethod = lottoClass.getClass().getDeclaredMethod("getYield", Integer[].class);
+            moneyField.setAccessible(true);
+            getYieldMethod.setAccessible(true);
 
+            moneyField.set(lottoClass,14000);
+            double yield = (double) getYieldMethod.invoke(lottoClass,new Object[]{statistics});
+            assertThat(yield).isEqualTo(testYield);
+        }catch(NoSuchMethodException e){
+            e.printStackTrace();
+        }catch(IllegalAccessException e){
+            e.printStackTrace();
+        }catch(InvocationTargetException e){
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 } 

@@ -97,6 +97,6 @@ public class Lotto {
 
     private double getYield(Integer[] statistics){
         int sum = (THREE_CORRECT_PRIZE * statistics[0]) + (FOUR_CORRECT_PRIZE * statistics[1]) + (FIVE_CORRECT_PRIZE * statistics[2]) + (FIVE_CORRECT_PRIZE_WITH_BONUS * statistics[3]) + (ALL_CORRECT_PRIZE * statistics[4]);
-        return sum / money;
+        return (double) sum / money;
     }
 }
