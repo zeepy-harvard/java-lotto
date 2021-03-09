@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -78,7 +79,29 @@ public class LottoTest {
     @Test
     @DisplayName("로또_비교_테스트")
     public void compareLottoNumberTest(){
+        Lotto lottoClass = new Lotto();
+        ArrayList<Integer> lottoList = new ArrayList<>(Arrays.asList(1,2,3,4,40,41));
+        List<ArrayList<Integer>> arrayListLottoLists=new ArrayList<ArrayList<Integer>>() {{
+            add(lottoList);
+        }};
+        LottoLists<ArrayList<Integer>> lottoLists = new LottoLists<>(arrayListLottoLists);
+        Integer[] previousLottoNumber = {1,2,3,4,5,6};
+        int bonusBall = 40;
 
+        try{
+            Method compareLottoNumberMethod = lottoClass.getClass().getDeclaredMethod("compareLottoNumber",LottoLists.class,Integer[].class,int.class);
+            compareLottoNumberMethod.setAccessible(true);
+
+            Integer[] statistics = (Integer[]) compareLottoNumberMethod.invoke(lottoClass,lottoLists,previousLottoNumber,bonusBall);
+            assertThat(statistics[2]).isEqualTo(0);
+            assertThat(statistics[3]).isEqualTo(1);
+        }catch(NoSuchMethodException e){
+            e.printStackTrace();
+        }catch(InvocationTargetException e){
+            e.printStackTrace();
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+        }
     }
 
     @Test
