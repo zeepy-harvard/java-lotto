@@ -157,7 +157,47 @@ public enum LottoNumber {
 }
 ```
 
+-------------------------------------------
 
+# 1차피드백
+
+1. 테스트 코드를 작성해주세요.
+2. 메소드의 자리를 순서와 맞게 배치해주세요. `Ctrl + Shift + ↑,↓`를 활용해 읽기 편하게 변경해주세요.
+3. `ArrayList`로 선언된 것을 `List<T>`로 변경해주세요. 그 List의 클래스를 알기 쉽게 해주세요.
+4. LottoList 클래스를 구현해주세요. 일급 컬렉션에 대해 학습해보는 시간이 될겁니다.
+5. Array를 지양해주세요. Java에서의 Array는 성능은 우수하나, 기능적 한계가 큽니다.
+
+---------------------------------
+
+## 풀이
+
+4.일급 컬렉션에 가장 많은 공과 시간을 들였다. LottoLists라는 클래스를 생성했고 불변성을 유지하기 위해 setter 메소드들은 작성하지 않고 LottoLists의 크기와 각 lottoList들을 가져오기위해 size()와 getLottoList()메소드 그리고 생성자는 lottoList들을 구매한 갯수만큼 저장한다음 일급컬랙션을 만드는 방식으로 하였다.
+
+일급컬렉션은 컬렉션의 불변성을 지키고 특징을 살려 네이밍을 할수 있기때문에 보통은 어느정도 완성된 컬렉션을 가지고 클래스를 생성한다. 일급 컬렉션의 변형을 위해서 불변성을 위배하지 않으면서 컬렉션을 수정하는것도 가능은 하다.
+
+```java
+public class LottoLists<T>{
+    private List<T> lottoLists;
+
+    public LottoLists(List<T> lottoLists){this.lottoLists = lottoLists;}
+
+    public Integer size(){
+        return lottoLists.size();
+    }
+
+    public T getLottoList(int lottoListsIndex){
+        return lottoLists.get(lottoListsIndex);
+    }
+}
+```
+
+5.Array를 통계를 내는데 사용했는데 Integer[]타입을 사용한 이유는 배열은 새로운 값을 추가하거나 삭제하는데 많은 비효율적인 임팩트를 보여준다. 하지만 해당 index에 해당하는 값을 찾거나 수정하는데는 굉장한 임팩트를 보여주기떄문에 ArrayList를 지향하라고 했지만 statistics의 배열에서 알맞은 조건의 index의 값을 가지고 놀아야 했기 때문에 Array를 사용하였다.
+
+
+
+*꼭 SRP(단일 책임 원칙)을 상기하면서 코드를 작성하자.
+
+------------------------------------------
 
 # enum
 
