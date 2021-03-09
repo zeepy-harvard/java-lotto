@@ -22,6 +22,7 @@ public class LottoTest {
         try{
             Method getNumberOfLottoMethod = lottoClass.getClass().getDeclaredMethod("getNumberOfLotto", int.class);
             getNumberOfLottoMethod.setAccessible(true);
+            int test = (int) getNumberOfLottoMethod.invoke(lottoClass,money);
 
             assertThat((int) getNumberOfLottoMethod.invoke(lottoClass,money)).isEqualTo(2);
         }catch (NoSuchMethodException e){
@@ -37,6 +38,32 @@ public class LottoTest {
     }
 
     @Test
+    @DisplayName("구매한_lottoLists_반환_테스트")
+    public void getPurchasesLottoTest(){
+        Lotto lottoClass = new Lotto();
+        LottoLists<ArrayList<Integer>> lottoLists;
+        int numberOfLotto = 2;
+
+        try{
+            Method getPurchaseLottoMethod = lottoClass.getClass().getDeclaredMethod("getPurchasesLotto",int.class);
+            getPurchaseLottoMethod.setAccessible(true);
+
+            lottoLists = new LottoLists<>((List<ArrayList<Integer>>) getPurchaseLottoMethod.invoke(lottoClass,numberOfLotto));
+            assertThat(lottoLists.size()).isEqualTo(2);
+            assertThat(lottoLists.getLottoList(0).size()).isEqualTo(6);
+        }catch(NoSuchMethodException e){
+            System.out.println("getPurchaseLotto를 찾지못했습니다.");
+            e.printStackTrace();
+        }catch(IllegalAccessException e){
+            System.out.println("Relection을 사용하는데 참조할수 없는 클래스,필드,메소드를 참조했습니다.");
+            e.printStackTrace();
+        }catch(InvocationTargetException e){
+            System.out.println("invoke로 getPurchaseLottoMethod를 실행중 Exception발생");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     @DisplayName("LottoLists 크기 반환 & 내용물 반환")
     public void getLottoListsSizeTest(){
         List<Integer> testArrayList = new ArrayList();
@@ -46,5 +73,17 @@ public class LottoTest {
         LottoLists<Integer> testLottoLists = new LottoLists<>(testArrayList);
         assertThat(testLottoLists.size()).isEqualTo(2);
         assertThat(testLottoLists.getLottoList(0)).isEqualTo(testArrayList.get(0));
+    }
+
+    @Test
+    @DisplayName("로또_비교_테스트")
+    public void compareLottoNumberTest(){
+
+    }
+
+    @Test
+    @DisplayName("수익률_테스트")
+    public void getYieldTest(){
+
     }
 } 
