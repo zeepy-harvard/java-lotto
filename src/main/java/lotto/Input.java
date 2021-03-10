@@ -3,7 +3,8 @@ package lotto;
 import java.util.Scanner;
 
 public class Input {
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
+    private static String numberRegularExpression = "^[0-9]+$";
     public static int inputMoney(){
         System.out.println("구입금액을 입력해 주세요.");
         String inputValue = scanner.nextLine();
@@ -11,6 +12,7 @@ public class Input {
     }
 
     private static int convertToInteger(String inputValue){
+        Validation.isNumberInput(inputValue);
         return Integer.parseInt(inputValue);
     }
 

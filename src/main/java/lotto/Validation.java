@@ -2,6 +2,11 @@ package lotto;
 
 public class Validation {
 
+    public static void isNumberInput(String inputValue){
+        String numberRegular_Expression = "^[0-9]+$";
+        if(!inputValue.matches(numberRegular_Expression)) throw new RuntimeException("숫자를 입력해주세요.");
+    }
+
     public static void previousLottoNumberValidation(Integer[] previousLottoNumber) {
         for(int i=0;i<previousLottoNumber.length;i++) {
             checkRangeOfLottoNumber(i,previousLottoNumber);
