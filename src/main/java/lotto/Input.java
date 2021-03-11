@@ -18,9 +18,9 @@ public class Input {
 
     public static Integer[] inputPreviousLottoNumber(){
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
-        Integer[] preLottoNumber = prevLottoNumberSplit(scanner.nextLine());
-        Validation.previousLottoNumberValidation(preLottoNumber);
-        return preLottoNumber;
+        Integer[] prevLottoNumber = prevLottoNumberSplit(scanner.nextLine());
+        Validation.previousLottoNumberValidation(prevLottoNumber);
+        return prevLottoNumber;
     }
 
     public static Integer[] prevLottoNumberSplit(String previousLottoNumber){

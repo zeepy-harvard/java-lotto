@@ -8,15 +8,20 @@ public class Validation {
     }
 
     public static void previousLottoNumberValidation(Integer[] previousLottoNumber) {
-        checkpreviousLottoNumberLength(previousLottoNumber);
+        checkPreviousLottoNumberLength(previousLottoNumber);
         for(int i=0;i<previousLottoNumber.length;i++) {
             checkRangeOfLottoNumber(i,previousLottoNumber);
             checkSameNumber(i,previousLottoNumber);
         }
     }
 
-    private static void checkpreviousLottoNumberLength(Integer[] previousLottoNumber){
-        if(previousLottoNumber.length<6) throw new RuntimeException("당첨번호를 전부 입력해주세요.");
+    private static void checkPreviousLottoNumberLength(Integer[] previousLottoNumber){
+        int valueCount=0;
+        for(int i = 0;i<previousLottoNumber.length;i++){
+            if(previousLottoNumber[i]!=null) valueCount++;
+        }
+        System.out.println(valueCount);
+        if(valueCount<6) throw new RuntimeException("당첨번호를 전부 입력해주세요.");
     }
 
     private static void isContainSameNumber(int winningNumberIndex, Integer[] previousLottoNumber, int j) {
