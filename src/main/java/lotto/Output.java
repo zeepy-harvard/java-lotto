@@ -1,8 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Output {
     public static void outputLottoLists(LottoLists lottoLists){
         for(int i=0;i<lottoLists.size();i++){
