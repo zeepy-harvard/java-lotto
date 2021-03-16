@@ -53,7 +53,7 @@ public class Input {
     }
 
     private static void checkRangeOfLottoNumber(int winningNumberIndex,Integer[] previousLottoNumber){
-        if(previousLottoNumber[winningNumberIndex] > 45 & previousLottoNumber[winningNumberIndex]<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
+        if(previousLottoNumber[winningNumberIndex] > 45 && previousLottoNumber[winningNumberIndex]<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
     }
 
     private static void checkSameNumber(int winningNumberIndex,Integer[] previousLottoNumber){
@@ -74,6 +74,6 @@ public class Input {
     }
 
     public static void bonusBallValidation(int bonusBall)throws RuntimeException{
-        if(bonusBall > 45 & bonusBall<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
+        if(bonusBall > 45 && bonusBall<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
     }
 }
