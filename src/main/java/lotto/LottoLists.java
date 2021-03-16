@@ -32,7 +32,7 @@ public class LottoLists<T>{
         for(int i=0;i<lottoLists.size();i++){
             LottoList lottoList = (LottoList) lottoLists.get(i);
             int numberCnt = 0;
-            boolean isCorrectBonus = false;
+            boolean isCorrectBonus;
 
             numberCnt = lottoList.checkNumber(previousLottoNumber,numberCnt);
             isCorrectBonus = lottoList.checkBonus(bonusBall);
