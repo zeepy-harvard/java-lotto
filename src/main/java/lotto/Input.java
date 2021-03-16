@@ -14,8 +14,8 @@ public class Input {
     }
 
     private static int convertToInteger(String inputValue){
-        String numberRegular_Expression = "^[0-9]+$";
-        if(!inputValue.matches(numberRegular_Expression)) throw new WrongInputNumberException("숫자를 입력해주세요.");
+        String numberRegularExpression = "^[0-9]+$";
+        if(!inputValue.matches(numberRegularExpression)) throw new WrongInputNumberException("숫자를 입력해주세요.");
         return Integer.parseInt(inputValue);
     }
 
