@@ -35,15 +35,14 @@ public class LottoList {
         return numberCnt;
     }
 
-    public int getNumberCnt(int numberCnt, Integer previousNumber) {
+    private int getNumberCnt(int numberCnt, Integer previousNumber) {
         if (lottoList.contains(previousNumber)) {
             numberCnt++;
         }
         return numberCnt;
     }
 
-    public boolean checkBonus(int bonusBall, boolean isCorrectBonus) {
-        if(lottoList.contains(bonusBall)) isCorrectBonus=true;
-        return isCorrectBonus;
+    public boolean checkBonus(int bonusBall) {
+        return lottoList.contains(bonusBall);
     }
 }
