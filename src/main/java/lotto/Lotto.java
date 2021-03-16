@@ -1,6 +1,7 @@
 package lotto;
 
 public class Lotto {
+    private int moneyDivisionPay = 1000;
     private int money;
 
     private LottoLists<LottoList> lottoLists = new LottoLists<>();
@@ -23,6 +24,6 @@ public class Lotto {
     }
 
     private int getNumberOfLotto(int money) {
-        return money/1000;
+        return money/moneyDivisionPay;
     }
 }
