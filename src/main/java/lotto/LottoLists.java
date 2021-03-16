@@ -35,7 +35,7 @@ public class LottoLists<T>{
             boolean isCorrectBonus = false;
 
             numberCnt = lottoList.checkNumber(previousLottoNumber,numberCnt);
-            isCorrectBonus = lottoList.checkBonus(bonusBall,isCorrectBonus);
+            isCorrectBonus = lottoList.checkBonus(bonusBall);
             statistics.setStatistics(numberCnt,isCorrectBonus);
         }
         return statistics;
