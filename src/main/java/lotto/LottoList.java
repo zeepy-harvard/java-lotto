@@ -24,18 +24,17 @@ public class LottoList {
         return lottoList.toString();
     }
 
-    public int checkNumber(Integer[] previousLottoNumber,int numberCnt){
-        for (Integer previousNumber : previousLottoNumber) {
-            numberCnt = getNumberCnt(numberCnt, previousNumber);
-        }
-        return numberCnt;
+    public int checkNumber(Integer[] previousLottoNumber){
+        List<Integer> convertPreviousLottoNumber = convertToList(previousLottoNumber);
+        return (int) convertPreviousLottoNumber.stream()
+                .mapToInt(prevNumber->prevNumber.intValue())
+                .filter(prevNumber->lottoList.contains(prevNumber))
+                .count();
+
     }
 
-    private int getNumberCnt(int numberCnt, Integer previousNumber) {
-        if (lottoList.contains(previousNumber)) {
-            numberCnt++;
-        }
-        return numberCnt;
+    private List<Integer> convertToList(Integer[] previousLottoNumber){
+        return new ArrayList<>(Arrays.asList(previousLottoNumber));
     }
 
     public boolean checkBonus(int bonusBall) {
