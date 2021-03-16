@@ -15,13 +15,9 @@ public class LottoList {
     }
 
     public LottoList createLottoList(){
-        List<LottoNumber> allBalls = new ArrayList<>(Arrays.asList(LottoNumber.values()));
-        Collections.shuffle(allBalls);
-        ArrayList<Integer> lottoList = new ArrayList<>();
-        for(int i =0;i<6;i++){
-            lottoList.add(allBalls.get(i).getNumber());
-        }
-        return new LottoList(lottoList);
+        LottoBalls lottoBalls = new LottoBalls();
+        ArrayList<Integer> selectedBalls = lottoBalls.getSelectedBalls();
+        return new LottoList(selectedBalls);
     }
 
     public String getLottoListToString(){
