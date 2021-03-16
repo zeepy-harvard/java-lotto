@@ -21,7 +21,7 @@ public class LottoLists<T>{
         return findLottoList.getLottoListToString();
     }
 
-    public LottoLists createLottoLists(int numberOfLotto){
+    public LottoLists addLottoLists(int numberOfLotto){
         LottoList lottoList = new LottoList();
         for(int i=0;i<numberOfLotto;i++) lottoLists.add((T) lottoList.createLottoList());
         return new LottoLists(lottoLists);

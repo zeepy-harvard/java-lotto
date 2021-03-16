@@ -13,7 +13,7 @@ public class Lotto {
         int numberOfLotto = getNumberOfLotto(money);
         Output.outputNumberOfPurchaseLotto(numberOfLotto);
 
-        lottoLists = lottoLists.createLottoLists(numberOfLotto);
+        lottoLists = lottoLists.addLottoLists(numberOfLotto);
         Output.outputLottoLists(lottoLists);
 
         Integer[] previousLottoNumber = Input.inputPreviousLottoNumber();
