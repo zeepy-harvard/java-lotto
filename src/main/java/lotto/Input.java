@@ -38,9 +38,9 @@ public class Input {
 
     private static void previousLottoNumberValidation(Integer[] previousLottoNumber){
         checkPreviousLottoNumberLength(previousLottoNumber);
-        for(int i=0;i<previousLottoNumber.length;i++) {
-            checkRangeOfLottoNumber(i,previousLottoNumber);
-            checkSameNumber(i,previousLottoNumber);
+        for(int lottoNumber : previousLottoNumber){
+            checkRangeOfLottoNumber(lottoNumber);
+            checkSameNumber(lottoNumber,previousLottoNumber);
         }
     }
 
@@ -52,18 +52,18 @@ public class Input {
         if(valueCount<6) throw new WrongInputNumberException("당첨번호를 전부 입력해주세요.");
     }
 
-    private static void checkRangeOfLottoNumber(int winningNumberIndex,Integer[] previousLottoNumber){
-        if(previousLottoNumber[winningNumberIndex] > 45 && previousLottoNumber[winningNumberIndex]<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
+    private static void checkRangeOfLottoNumber(int lottoNumber){
+        if(lottoNumber > 45 && lottoNumber<1) throw new WrongInputNumberException("존재하지 않는 로또번호를 입력하셨습니다.");
     }
 
-    private static void checkSameNumber(int winningNumberIndex,Integer[] previousLottoNumber){
-        for(int j=winningNumberIndex+1;j<previousLottoNumber.length;j++){
-            isContainSameNumber(winningNumberIndex, previousLottoNumber, j);
+    private static void checkSameNumber(int lottoNumber,Integer[] previousLottoNumber){
+        for(int checkLottoNumber : previousLottoNumber){
+            isContainSameNumber(lottoNumber,checkLottoNumber);
         }
     }
 
-    private static void isContainSameNumber(int winningNumberIndex, Integer[] previousLottoNumber, int j) {
-        if(previousLottoNumber[winningNumberIndex].equals(previousLottoNumber[j])) throw new WrongInputNumberException("동일한 당첨번호가 나올수 없습니다.");
+    private static void isContainSameNumber(int lottoNumber, int checkLottoNumber) {
+        if(lottoNumber == checkLottoNumber) throw new WrongInputNumberException("동일한 당첨번호가 나올수 없습니다.");
     }
 
     public static int inputBonusBall(){
