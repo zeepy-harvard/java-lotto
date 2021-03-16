@@ -30,7 +30,6 @@ public class LottoList {
                 .mapToInt(prevNumber->prevNumber.intValue())
                 .filter(prevNumber->lottoList.contains(prevNumber))
                 .count();
-
     }
 
     private List<Integer> convertToList(Integer[] previousLottoNumber){
